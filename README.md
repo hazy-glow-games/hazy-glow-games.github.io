@@ -1,8 +1,8 @@
-# Tomodachi Games
+# Hazy Glow Games
 
-A small static landing page for Tomodachi Games.
+A small static landing page for Hazy Glow Games.
 
-Live site: https://tomodachi-games.github.io/
+Live site: https://hazy-glow-games.github.io/tomodachi-games.github.io/
 
 ## Edit and preview
 
