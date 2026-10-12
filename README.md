@@ -2,7 +2,7 @@
 
 A small static landing page for Hazy Glow Games.
 
-Live site: https://hazy-glow-games.github.io/tomodachi-games.github.io/
+Live site: https://hazy-glow-games.github.io/
 
 ## Edit and preview
 
