@@ -6,7 +6,7 @@ Live site: https://hazy-glow-games.github.io/
 
 ## Edit and preview
 
-Edit `index.html` and `styles.css`. This is a plain placeholder with the name, a short description, and a GitHub link. No JavaScript, dependencies, analytics, or build step.
+Edit `index.html` and `styles.css`. The page includes the name, a short description, the Thorge itch.io widget, and a GitHub link. No local JavaScript, dependencies, analytics, or build step.
 
 From this folder, run `python3 -m http.server 8000 --bind 127.0.0.1` and open http://127.0.0.1:8000/.
 
