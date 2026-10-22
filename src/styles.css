@@ -14,8 +14,11 @@ body {
 #background {
   position: fixed;
   inset: 0;
-  width: 100% !important;
-  height: 100% !important;
+  /* Size the canvas directly: transforms can soften the pixel grid. */
+  width: var(--background-width, 100vw) !important;
+  height: var(--background-height, 100vh) !important;
+  image-rendering: pixelated;
+  outline: none;
   z-index: -1;
   pointer-events: none;
 }

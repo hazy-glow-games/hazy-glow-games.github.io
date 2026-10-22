@@ -23,18 +23,6 @@ yarn build
 yarn preview
 ```
 
-## Creative coding
-
-Edit `src/background.ts`. Its scene returns Kaji drawing commands each frame;
-`state.now` is animation time in milliseconds, and `state.camera` provides the
-current drawing dimensions. The logical width is 1000 units and height follows
-the viewport aspect ratio. Add lines, circles, polygons, or other Kaji renderables
-inside the scene's render hook. Browser setup lives in `src/main.ts`.
-
-The canvas stays fixed behind the page, fills the viewport on resize, and lets
-pointer and keyboard input reach page content. Animation stops in hidden tabs;
-reduced-motion preferences produce a still frame, including after resizing.
-
 ## GitHub Pages
 
 The workflow builds and deploys `dist/` when changes land on `main`.
