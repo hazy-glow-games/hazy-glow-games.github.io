@@ -1,0 +1,39 @@
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  color: #eef4ff;
+  background: #0c101b;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  isolation: isolate;
+}
+
+#background {
+  position: fixed;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: -1;
+  pointer-events: none;
+}
+
+main {
+  padding: clamp(1.5rem, 6vw, 6rem);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  letter-spacing: -0.04em;
+  margin: 0 0 1rem;
+}
+
+p {
+  color: #b8c4da;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+iframe { border: 0; }
