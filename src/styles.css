@@ -13,10 +13,11 @@ body {
 
 #background {
   position: fixed;
-  inset: 0;
-  /* Size the canvas directly: transforms can soften the pixel grid. */
-  width: var(--background-width, 100vw) !important;
-  height: var(--background-height, 100vh) !important;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 100vmax !important;
+  height: 100vmax !important;
+  filter: brightness(0.25);
   image-rendering: pixelated;
   outline: none;
   z-index: -1;

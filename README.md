@@ -1,6 +1,9 @@
 # Hazy Glow Games
 
 Vite + TypeScript site with a full-viewport Kaji Canvas2D background.
+The bundled Hazy Glow animation loops silently at 25% brightness, with centered
+cover scaling. Reduced-motion preferences show a still frame. Its image and atlas
+in `public/assets/images` come from Kaji 0.0.108; no audio asset is loaded.
 
 ## Development
 

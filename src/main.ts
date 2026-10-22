@@ -3,13 +3,11 @@ import { getCanvas2DRenderer } from '@hazy-glow-games/kaji/hosts/renderers/canva
 import { createBackground } from './background'
 import './styles.css'
 
-const pixelSize = 6 // CSS pixels per square render pixel.
 const canvas = document.querySelector<HTMLCanvasElement>('#background')!
 const motion = matchMedia('(prefers-reduced-motion: reduce)')
 const listeners = new AbortController()
 const { signal } = listeners
 let game: GameAPI | undefined
-let elapsedSeconds = 0
 let pageVisible = true
 let updates = Promise.resolve()
 canvas.tabIndex = -1
@@ -18,23 +16,17 @@ canvas.style.position = 'fixed'
 const inactive = () => document.hidden || !pageVisible || signal.aborted
 
 async function update() {
-  const state = game?.stop()
+  game?.stop()
   if (inactive()) return
-  const width = Math.max(1, Math.ceil(innerWidth / pixelSize))
-  const height = Math.max(1, Math.ceil(innerHeight / pixelSize))
+  const width = 64
+  const height = 64
 
-  // Kaji fixes logical width at startup, so resize needs a fresh runtime.
-  if (!game || canvas.width !== width || canvas.height !== height) {
-    elapsedSeconds += (state?.now ?? 0) / 1000
-    const previous = game
-    game = undefined
-    await previous?.destroy()
+  // The authored scene stays 64×64; CSS covers any viewport.
+  if (!game) {
     if (signal.aborted) return
-    canvas.style.setProperty('--background-width', `${width * pixelSize}px`)
-    canvas.style.setProperty('--background-height', `${height * pixelSize}px`)
     const { host } = getCanvas2DRenderer({ canvas, renderMode: 'pixel', pixelRatio: 1 })
     game = await makeGame(
-      [createBackground(elapsedSeconds)],
+      [createBackground()],
       { id: 'loading', assets: {}, input: [], things: [], plugins: {} },
       { host, width, height },
     )
@@ -52,7 +44,6 @@ function scheduleUpdate() {
 
 motion.addEventListener('change', scheduleUpdate, { signal })
 document.addEventListener('visibilitychange', scheduleUpdate, { signal })
-window.addEventListener('resize', scheduleUpdate, { signal })
 window.addEventListener('pageshow', () => {
   pageVisible = true
   scheduleUpdate()
