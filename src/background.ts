@@ -10,16 +10,8 @@ export const background: Scene = {
   plugins: {
     render: {
       map: {
-        during: [
-          function clearBg(state, { render: { fillRect } }) {
-            const { width, height } = state.camera
-            return { renderables: [fillRect({ x: 0, y: 0, width, height }, '#000')] }
-          }
-        ],
         after: [
-          function lines(state, { render: {
-            line,
-          } }) {
+          function lines(state, { render }) {
             const { width, height } = state.camera
             const t = state.now / 1000
             const rows = 32
@@ -31,15 +23,16 @@ export const background: Scene = {
               return {
                 x,
                 y: Math.sin(phase * 2 * row + t) +
-                  Math.cos(phase * 2 * segment - t)
+                  Math.cos(phase * 2 * segment * height - t)
                   * x / width * Math.PI + 32
               }
             }
 
             return {
               renderables: [
+
                 ...Array.from({ length: rows }, (_, row) =>
-                  Array.from({ length: segments }, (_, segment) => line(
+                  Array.from({ length: segments }, (_, segment) => render.line(
                     point(row, segment),
                     point(row, segment + 1),
                     {
